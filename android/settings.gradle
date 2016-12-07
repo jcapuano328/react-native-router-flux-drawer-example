@@ -1,0 +1,3 @@
+rootProject.name = 'react-native-router-flux-drawer-example'
+
+include ':app'

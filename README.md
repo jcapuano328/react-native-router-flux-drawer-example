@@ -1,2 +1,10 @@
 # react-native-router-flux-drawer-example
-playground
+An example of a React Native/Redux/Router/Drawer app
+
+## Basic layout
+
+
+
+##### Give this a look...
+
+https://www.mysportsfeeds.com
