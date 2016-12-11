@@ -40,29 +40,25 @@ module.exports = (opts) => {
                 flex: 1,
                 flexDirection: 'row',
                 justifyContent: 'center',
-                alignItems: 'center',
-                backgroundColor: 'blue'
+                alignItems: 'center'
             },
             backButton: {
                 flex: 1,
                 flexDirection: 'row',
                 justifyContent: 'center',
-                alignItems: 'center',
-                backgroundColor: 'green'
+                alignItems: 'center'
             },
             title: {
                 flex: 8,
                 flexDirection:'column',
                 justifyContent: 'center',
-                alignItems: 'flex-start',
-                backgroundColor: 'yellow'
+                alignItems: 'flex-start'
             },
             rightButton: {
                 flex: 2,
                 flexDirection: 'row',
                 justifyContent: 'flex-end',
-                marginVertical: 10,
-                backgroundColor: 'pink'
+                marginVertical: 10
             }
         },
         render() {
@@ -76,10 +72,10 @@ module.exports = (opts) => {
 
             return (
                 <View style={[
-                  this.styles.header,
-                  this.props.navigationBarStyle,
-                  state.navigationBarStyle,
-                  selected.navigationBarStyle,
+                    {...this.styles.header, ...opts.style},
+                    this.props.navigationBarStyle,
+                    state.navigationBarStyle,
+                    selected.navigationBarStyle,
                 ]}>
                     {this.renderMenuButton(navProps,state)}
                     {this.renderBackButton(navProps,this.props.navigationState)}

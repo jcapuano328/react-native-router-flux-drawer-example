@@ -1,4 +1,4 @@
-var React = require('react');
+import React from 'react';
 import { View, ScrollView } from 'react-native';
 
 var NavMenu = React.createClass({
