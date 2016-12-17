@@ -2,6 +2,9 @@ import React from 'react';
 import { View, ScrollView, Text } from 'react-native';
 import IconButton from './iconButton';
 import ActionListItem from './actionListItem';
+import Icons from '../resources';
+import GetImage  from './getImage';
+let getImage = GetImage(Icons);
 
 var ActionList = React.createClass({
     render() {
@@ -15,9 +18,9 @@ var ActionList = React.createClass({
                             <View style={{flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-start', margin: 7,
                                 backgroundColor: this.props.backgroundColor || 'transparent', borderColor: 'black', borderWidth: 1, borderRadius: 2, borderStyle: 'solid'
                             }}>
-                                <Text style={{color: 'white', fontSize: 22, fontWeight: 'bold', margin: 10}}>Medications</Text>
+                                <Text style={{color: 'white', fontSize: 22, fontWeight: 'bold', margin: 10}}>{this.props.title}</Text>
                                 <View style={{flex: 1, alignItems: 'flex-end', justifyContent: 'center'}}>
-                                    <IconButton image={'add'} onPress={this.props.onAdd} />
+                                    <IconButton image={getImage('add')} onPress={this.props.onAdd} />
                                 </View>
                             </View>
                         </View>
@@ -40,7 +43,6 @@ var ActionList = React.createClass({
                                             onStatus={this.props.onStatus}
                                             onSelect={this.props.onSelect}
                                             onRemove={this.props.onRemove}
-                                            events={this.props.events}
                                         />
                                     );
                                 })}

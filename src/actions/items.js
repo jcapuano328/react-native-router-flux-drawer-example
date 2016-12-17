@@ -12,3 +12,31 @@ export const getAll = () => (dispatch) => {
         toast(err.message || err)(dispatch);
     });
 }
+
+export const save = (item) => (dispatch) => {
+    return items.save(item)
+    .then((i) => {
+        dispatch({type: types.SET_ITEM, value: i});
+    })
+    .catch((err) => {
+        console.error(err);
+        toast(err.message || err)(dispatch);
+    });
+}
+
+export const add = (item) => (dispatch) => {
+    dispatch({type: types.ADD_ITEM, value: item});
+}
+
+export const update = (item) => (dispatch) => {
+    dispatch({type: types.UPDATE_ITEM, value: item});
+}
+
+export const remove = (item) => (dispatch) => {
+    dispatch({type: types.REMOVE_ITEM, value: item});
+}
+
+export const setStatus = (item, status) => (dispatch) => {
+    item.status = status == 'active';
+    dispatch({type: types.UPDATE_ITEM, value: item});
+}

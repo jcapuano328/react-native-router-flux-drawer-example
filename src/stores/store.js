@@ -8,6 +8,12 @@ import rootReducer from '../reducers';
             releasedate: datetime
         },
         items: [], // the list of managed items
+        currentitem: {  // currently selected item
+            id: int,
+            status: string,
+            name: string,
+            desc: string
+        },
         filter: {   // the filter for the items
             period: string
         },
