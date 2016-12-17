@@ -22,8 +22,10 @@ export const MenuItems = [
 
 export default Actions.create(
     <Scene key="root" navBar={NavBar}>
-        <Scene key="home" type='reset' navBar={NavBar} component={NavigableView("This is the Home View", 'red', ['items','about'])} title="Home" initial={true} />
-        <Scene key="items" navBar={NavBar} component={NavigableView("This is the Items List View", 'blue', ['about'])} title="Items" />
-        <Scene key="about" navBar={NavBar} component={NavigableView("This is the About View", 'green')} title="About" />
+        <Scene key="home" type='reset' component={NavigableView("This is the Home View", 'red', ['items','about'])} title="Home" initial={true} />
+        <Scene key="items" component={NavigableView("This is the Items List View", 'blue', ['item','about'])} title="Items" />
+        <Scene key="item" component={NavigableView("This is the Item View", 'pink', ['subitem','about'])} title="Item" />
+        <Scene key="subitem" component={NavigableView("This is the SubItem View", 'yellow', ['about'])} title="SubItem" />
+        <Scene key="about" component={NavigableView("This is the About View", 'green')} title="About" />
     </Scene>
 );
