@@ -16,14 +16,18 @@ module.exports = (state = [], action) => {
         if (idx > -1) {
             state[idx] = action.value;
         }
-        return state;
+        return [
+            ...state
+        ];
 
     case types.REMOVE_ITEM:
         idx = state.findIndex((i) => i.id == action.value.id);
         if (idx > -1) {
-            return state.slice(idx,1);
+            state = state.slice(idx,1);
         }
-        return state;
+        return [
+            ...state
+        ];
 
 
     default:

@@ -10,7 +10,6 @@ let NavigationDrawer = React.createClass({
         };
     },
     onSelect(e) {
-        console.log(e);
         //this.setState({open:false});
         this.drawer.close();
         Actions[e] && Actions[e]();

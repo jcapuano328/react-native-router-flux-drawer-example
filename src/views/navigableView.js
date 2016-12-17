@@ -5,7 +5,6 @@ import { View, Text, TouchableOpacity } from 'react-native';
 let NavigableView = React.createClass({
     onNext(next) {
         return () => {
-            console.log(next, Actions[next]);
             Actions[next] && Actions[next]();
         }
     },

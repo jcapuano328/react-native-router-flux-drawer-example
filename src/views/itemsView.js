@@ -24,7 +24,6 @@ var ItemsView = React.createClass({
     onRemove(item) {
     },
     render() {
-        console.log('>>>>> render items');
         return (
             <ActionList items={this.props.items}
                 backgroundColor={'gray'}

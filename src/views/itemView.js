@@ -4,17 +4,16 @@ import { connect } from 'react-redux';
 import { setStatus,setName,setDesc } from '../actions/item';
 
 var ItemView = React.createClass({
-    onChangeStatus(v) {        
-        this.props.setStatus(this.props.id, v);
+    onChangeStatus(v) {
+        this.props.setStatus(v);
     },
     onChangeName(v) {
-        this.props.setName(this.props.id, v);
+        this.props.setName(v);
     },
     onChangeDesc(v) {
-        this.props.setDesc(this.props.id, v);
+        this.props.setDesc(v);
     },
     render() {
-        console.log(this.props);
         return (
             <View style={{flex: 1,marginTop: 50}}>
                 <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
