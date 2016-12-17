@@ -6,7 +6,7 @@
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "debug": "node node_modules/react-native/local-cli/cli.js run-android",
     "debug-ios": "node node_modules/react-native/local-cli/cli.js run-ios",
-    "build-dbg": "cd android && gradlew assembleDebug && cd ..",    
+    "build-dbg": "cd android && gradlew assembleDebug && cd ..",
     "bridge": "adb reverse tcp:8081 tcp:8081",
     "menu": "adb shell input keyevent 82",
     "logs": "adb logcat *:S ReactNative:V ReactNativeJS:V",

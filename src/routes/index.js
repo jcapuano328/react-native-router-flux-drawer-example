@@ -1,31 +1,34 @@
 import React from 'react';
 import { Actions, Scene } from 'react-native-router-flux';
+import {HomeView,AboutView,ItemsView,NavigableView} from '../views';
 import Icons from '../resources';
-import {NavigableView} from '../views';
 import navBar from '../components/navBar';
 const NavBar = navBar({
     style: {
-        backgroundColor: 'gold'
+        backgroundColor: 'gray'
     },
+    textcolor: 'white',
+    menu: 'menu-dark',
+    left: 'chevron-left-dark',
     onBack: Actions.pop,
     rightButtons: [
-        {image:'refresh-light', onPress: () => console.log('Press refresh!')},
-        {image:'info-light', onPress: () => Actions.about() }
+        {image:'refresh-dark', onPress: () => console.log('Press refresh!')},
+        {image:'info-dark', onPress: () => Actions.about() }
     ]
 });
 
 export const MenuItems = [
     {key: 'home',name: 'Home', image: 'home-light'},
-    {key: 'items',name: 'Items', image: require('../resources/list-light.png')},
+    {key: 'items',name: 'Items', image: 'items-light'},
     {key: 'about',name: 'About', image: 'info-light'}
 ];
 
 export default Actions.create(
     <Scene key="root" navBar={NavBar}>
-        <Scene key="home" type='reset' component={NavigableView("This is the Home View", 'red', ['items','about'])} title="Home" initial={true} />
-        <Scene key="items" component={NavigableView("This is the Items List View", 'blue', ['item','about'])} title="Items" />
+        <Scene key="home" type='reset' component={HomeView} title="" initial={true} />
+        <Scene key="items" component={ItemsView} title="Items" />
         <Scene key="item" component={NavigableView("This is the Item View", 'pink', ['subitem','about'])} title="Item" />
         <Scene key="subitem" component={NavigableView("This is the SubItem View", 'yellow', ['about'])} title="SubItem" />
-        <Scene key="about" component={NavigableView("This is the About View", 'green')} title="About" />
+        <Scene key="about" component={AboutView} title="About" />
     </Scene>
 );

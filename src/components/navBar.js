@@ -2,6 +2,11 @@ import React, {PropTypes} from 'react';
 import { View, Text, Platform } from 'react-native';
 import IconButton from './iconButton';
 import Icons from '../resources';
+import GetImage  from './getImage';
+let getImage = GetImage(Icons);
+
+
+
 let height = {
     ...Platform.select({
       ios: {
@@ -87,7 +92,7 @@ module.exports = (opts) => {
         renderMenuButton(props,state) {
             return (
                 <View style={this.styles.menuButton}>
-                    <IconButton image={props.logo || props.menu || Icons['menu-light']} height={iconHeight} width={iconWidth} resizeMode='stretch'
+                    <IconButton image={getImage(props.logo || props.menu || opts.menu || 'menu-light')} height={iconHeight} width={iconWidth} resizeMode='stretch'
                         onPress={this.context.drawer.toggle} />
                 </View>
             );
@@ -97,7 +102,7 @@ module.exports = (opts) => {
                 ? null
                 : (
                     <View style={this.styles.backButton}>
-                        <IconButton image={Icons['chevron-left']} height={iconHeight} width={iconWidth} resizeMode='stretch' onPress={opts.onBack} />
+                        <IconButton image={getImage(props.left || opts.left || 'chevron-left-light')} height={iconHeight} width={iconWidth} resizeMode='stretch' onPress={opts.onBack} />
                     </View>
                 );
         },
@@ -112,7 +117,7 @@ module.exports = (opts) => {
             return (
                 <View style={this.styles.title}>
                     <Text style={{
-                          color: props.textcolor || 'black',
+                          color: opts.textcolor || 'black',
                           fontSize: 22,
                           fontWeight: 'bold',
                           //marginLeft: 10,
@@ -123,7 +128,7 @@ module.exports = (opts) => {
                     </Text>
                     {props.subtitle
                         ? <Text style={{
-                              color: props.textcolor || 'black',
+                              color: opts.textcolor || 'black',
                               fontSize: 14,
                               //marginLeft: 10,
                               //marginVertical: 10,
@@ -137,12 +142,6 @@ module.exports = (opts) => {
             );
         },
         renderRightButton(props,state) {
-            let getImage = (image) => {
-                if (typeof image == 'string') {
-                    return Icons[image];
-                }
-                return image;
-            }
             return (
                 <View style={this.styles.rightButton}>
                     {(opts.rightButtons || []).map((b,i) => {

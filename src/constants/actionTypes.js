@@ -1,3 +1,4 @@
 module.exports = {
-    TOAST: 'TOAST'
+    TOAST: 'TOAST',
+    SET_ITEMS: 'SET_ITEMS'
 };

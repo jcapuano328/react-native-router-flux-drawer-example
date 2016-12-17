@@ -1,13 +1,10 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import Icons from '../resources';
+import GetImage  from './getImage';
+let getImage = GetImage(Icons);
 
-let getImage = (image) => {
-    if (typeof image == 'string') {
-        return Icons[image];
-    }
-    return image;
-}
+
 
 var NavMenuItem = React.createClass({
     onPress() {
