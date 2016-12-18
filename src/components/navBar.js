@@ -146,7 +146,8 @@ module.exports = (opts) => {
                 <View style={this.styles.rightButton}>
                     {(opts.rightButtons || []).map((b,i) => {
                         return (
-                            <IconButton key={i} image={getImage(b.image)} height={b.height || iconHeight} width={b.width || iconWidth} onPress={b.onPress} />
+                            <IconButton key={i} image={getImage(b.image)} height={b.height || iconHeight} width={b.width || iconWidth}
+                                onPress={() => b.onPress(this.props)} />
                         )
                     })}
                 </View>

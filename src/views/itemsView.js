@@ -5,7 +5,7 @@ import { View, Alert } from 'react-native';
 import { connect } from 'react-redux';
 import {Actions} from 'react-native-router-flux';
 import ActionList from '../components/actionList';
-import {getAll,setStatus} from '../actions/items';
+import {getAll,setStatus,remove} from '../actions/items';
 import {select} from '../actions/item';
 
 var ItemsView = React.createClass({
@@ -19,9 +19,8 @@ var ItemsView = React.createClass({
         this.props.select(item);
         Actions.item();
     },
-    onAdd() {
-    },
     onRemove(item) {
+        this.props.remove(item);
     },
     render() {
         return (
@@ -32,7 +31,6 @@ var ItemsView = React.createClass({
                 formatSubtitle={(i) => i.desc}
                 onStatus={this.onStatus}
                 onSelect={this.onSelect}
-                onAdd={this.onAdd}
                 onRemove={this.onRemove}
             />
         );
@@ -45,5 +43,5 @@ const mapStateToProps = (state) => ({
 
 module.exports = connect(
   mapStateToProps,
-  {getAll,setStatus,select}
+  {getAll,setStatus,select,remove}
 )(ItemsView);

@@ -20,5 +20,7 @@ module.exports = {
 
 	"select": require('./select.png'),
 	"add": require('./add.png'),
-	"remove": require('./remove.png')
+	"remove": require('./remove.png'),
+	"accept": require('./accept.png'),
+	"discard": require('./reject.png')	
 };

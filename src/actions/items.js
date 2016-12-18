@@ -24,10 +24,6 @@ export const save = (item) => (dispatch) => {
     });
 }
 
-export const add = (item) => (dispatch) => {
-    dispatch({type: types.ADD_ITEM, value: item});
-}
-
 export const update = (item) => (dispatch) => {
     dispatch({type: types.UPDATE_ITEM, value: item});
 }

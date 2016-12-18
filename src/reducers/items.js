@@ -6,10 +6,16 @@ module.exports = (state = [], action) => {
     case types.SET_ITEMS:
         return action.value;
 
-    /*
     case types.ADD_ITEM:
-        let id = state.reduce((maxId, item) => Math.max(item.id, maxId), -1) + 1
-    */
+        return [
+            ...state,
+            {
+                id: state.reduce((maxId, item) => Math.max(item.id, maxId), 0) + 1,
+                status: action.value.status,
+                name: action.value.name,
+                desc: action.value.desc
+            }
+        ];
 
     case types.UPDATE_ITEM:
         idx = state.findIndex((i) => i.id == action.value.id);
@@ -23,12 +29,11 @@ module.exports = (state = [], action) => {
     case types.REMOVE_ITEM:
         idx = state.findIndex((i) => i.id == action.value.id);
         if (idx > -1) {
-            state = state.slice(idx,1);
+            state.splice(idx,1);
         }
         return [
             ...state
         ];
-
 
     default:
         return state;
