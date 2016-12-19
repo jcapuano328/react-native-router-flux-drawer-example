@@ -33,7 +33,7 @@ var ItemView = React.createClass({
                 <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
                     <TextInput style={{flex: 1, marginLeft: 10, fontSize: 20}} placeholder={'Description'} onChangeText={this.onChangeDesc}>{this.props.desc}</TextInput>
                 </View>
-                <View style={{flex: 4}}>
+                <View style={{flex: 5}}>
                     <ActionList items={this.props.subitems}
                         backgroundColor={'gray'}
                         title={'SubItems'}
