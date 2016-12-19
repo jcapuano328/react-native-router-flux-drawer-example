@@ -4,7 +4,24 @@
 		status: true,
 		name: 'Item 1',
 		desc: 'this is the first item',
-		image: '1'
+		image: '1',
+		subitems: [
+			{
+				id: 10,
+				name: 'SubItem 1',
+				desc: 'This is the first subitem'
+			},
+			{
+				id: 11,
+				name: 'SubItem 2',
+				desc: 'This is the second subitem'
+			},
+			{
+				id: 12,
+				name: 'SubItem 3',
+				desc: 'This is the third subitem'
+			}
+		]
 	},
 	{
 		id: 2,

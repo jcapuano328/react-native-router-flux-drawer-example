@@ -25,7 +25,6 @@ const navBarActionListOpts = {
     ...navBarOpts,
     rightButtons: [
         {image:'add', onPress: (props) => {
-            console.log('Press add!');
             props.create();
             Actions.item();
         }},

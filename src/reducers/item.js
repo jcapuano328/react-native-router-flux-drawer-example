@@ -6,11 +6,11 @@ module.exports = (state = {}, action) => {
         return action.value;
 
     case types.UPDATE_SELECTED_ITEM:
-        let s = {};
-        s[action.value.field] = action.value.value;
+        let item = {};
+        item[action.value.field] = action.value.value;
         return {
             ...state,
-            ...s
+            ...item
         };
 
     default:

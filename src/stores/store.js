@@ -12,6 +12,12 @@ import rootReducer from '../reducers';
             id: int,
             status: string,
             name: string,
+            desc: string,
+            subitems: []
+        },
+        currentsubitem: {
+            id: int,
+            name: string,
             desc: string
         },
         filter: {   // the filter for the items

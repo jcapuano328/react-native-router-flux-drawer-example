@@ -8,7 +8,8 @@ export const create = () => (dispatch) => {
     select({
         status: true,
         name: 'New Item',
-        desc: ''
+        desc: '',
+        subitems: []
     })(dispatch);
 }
 

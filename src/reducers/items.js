@@ -13,7 +13,8 @@ module.exports = (state = [], action) => {
                 id: state.reduce((maxId, item) => Math.max(item.id, maxId), 0) + 1,
                 status: action.value.status,
                 name: action.value.name,
-                desc: action.value.desc
+                desc: action.value.desc,
+                subitems: action.value.subitems
             }
         ];
 
