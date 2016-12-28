@@ -1,8 +1,11 @@
 import React from 'react';
 import { View, Switch, Text, TextInput } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import ActionList from '../components/actionList';
 import { connect } from 'react-redux';
 import { setStatus,setName,setDesc } from '../actions/item';
+import { select,create } from '../actions/subitem';
+import { remove } from '../actions/subitems';
 
 var ItemView = React.createClass({
     onChangeStatus(v) {
@@ -15,10 +18,15 @@ var ItemView = React.createClass({
         this.props.setDesc(v);
     },
     onSelect(subitem) {
+        this.props.select(subitem);
+        Actions.subitem();
     },
     onAdd() {
+        this.props.create();
+        Actions.subitem();
     },
     onRemove(subitem) {
+        this.props.remove(subitem);
     },
     render() {
         return (
@@ -61,7 +69,10 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps =  ({
   setStatus,
   setName,
-  setDesc
+  setDesc,
+  select,
+  create,
+  remove
 });
 
 module.exports = connect(

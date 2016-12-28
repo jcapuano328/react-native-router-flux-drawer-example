@@ -1,8 +1,9 @@
 import React from 'react';
 import { Actions, Scene } from 'react-native-router-flux';
-import {HomeView,AboutView,ItemsView,ItemView,NavigableView} from '../views';
+import {HomeView,AboutView,ItemsView,ItemView,SubItemView,NavigableView} from '../views';
 import { connect } from 'react-redux';
-import {accept,select,create} from '../actions/item';
+import {accept as acceptItem,select as selectItem,create as createItem} from '../actions/item';
+import {accept as acceptSubItem} from '../actions/subitem';
 
 
 import navBar from '../components/navBar';
@@ -25,7 +26,7 @@ const navBarActionListOpts = {
     ...navBarOpts,
     rightButtons: [
         {image:'add', onPress: (props) => {
-            props.create();
+            props.createItem();
             Actions.item();
         }},
         ...rightButtons
@@ -35,16 +36,16 @@ const navBarActionItemOpts = {
     ...navBarOpts,
     rightButtons: [
         {image:'accept', onPress: (props) => {
-            props.accept();
+            props.acceptItem();
             Actions.pop();
         }},
         {image:'discard', onPress: () => Actions.pop()}
     ]
 };
 
-const NavBarActionList = connect(null, {create,select})(navBar(navBarActionListOpts));
-const NavBarActionItem = connect(null, {accept})(navBar(navBarActionItemOpts));
-
+const NavBarActionList = connect(null, {createItem,selectItem})(navBar(navBarActionListOpts));
+const NavBarActionItem = connect(null, {acceptItem})(navBar(navBarActionItemOpts));
+const NavBarActionSubItem = connect(null, {acceptItem:acceptSubItem})(navBar(navBarActionItemOpts));
 
 export const MenuItems = [
     {key: 'home',name: 'Home', image: 'home-light'},
@@ -57,7 +58,7 @@ export default Actions.create(
         <Scene key="home" type='reset' component={HomeView} title="" />
         <Scene key="items" navBar={NavBarActionList} component={ItemsView} title="Items" initial={true} />
         <Scene key="item" navBar={NavBarActionItem} component={ItemView} title="Item" />
-        <Scene key="subitem" component={NavigableView("This is the SubItem View", 'yellow', ['about'])} title="SubItem" />
+        <Scene key="subitem" navBar={NavBarActionSubItem} component={SubItemView} title="SubItem" />
         <Scene key="about" component={AboutView} title="About" />
     </Scene>
 );
