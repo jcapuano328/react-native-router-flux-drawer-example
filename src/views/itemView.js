@@ -55,7 +55,7 @@ const mapStateToProps = (state) => ({
     status: state.currentitem.status,
     name: state.currentitem.name,
     desc: state.currentitem.desc,
-    subitems: state.currentitem.subitems
+    subitems: state.currentitem.subitems.map((id) => state.subitems[id])
 });
 
 const mapDispatchToProps =  ({

@@ -38,7 +38,7 @@ var ItemsView = React.createClass({
 });
 
 const mapStateToProps = (state) => ({
-    items: state.items
+    items: state.items.sort.map((id) => state.items.table[id])
 });
 
 module.exports = connect(
