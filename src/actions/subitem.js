@@ -13,7 +13,7 @@ export const create = () => (dispatch) => {
 
 export const accept = () => (dispatch,getState) => {
     const {currentsubitem} = getState();
-    dispatch({type: currentitem.id ? types.UPDATE_SUBITEM : types.ADD_SUBITEM, value: currentsubitem});
+    dispatch({type: currentsubitem.id ? types.UPDATE_SUBITEM : types.ADD_SUBITEM, value: currentsubitem});
 }
 
 export const setName = (value) => (dispatch) => {

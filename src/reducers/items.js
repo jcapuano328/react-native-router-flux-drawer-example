@@ -1,40 +1,56 @@
 import types from '../constants/actionTypes';
 
-module.exports = (state = [], action) => {
-    let idx = -1;
+const defaultState = {
+    sort: [],
+    table: {}
+};
+
+module.exports = (state = defaultState, action) => {
     switch (action.type) {
     case types.SET_ITEMS:
-        return action.value;
+        return {
+            sort: [...action.value.ids],
+            table: {...action.value.items}
+        };
 
     case types.ADD_ITEM:
-        return [
-            ...state,
-            {
-                id: state.reduce((maxId, item) => Math.max(item.id, maxId), 0) + 1,
-                status: action.value.status,
-                name: action.value.name,
-                desc: action.value.desc,
-                subitems: action.value.subitems
+        // move this to action
+        //let id = state.sort.reduce((maxId, id) => Math.max(id, maxId), 0) + 1;
+        return {
+            sort: [...state.sort, action.value.id],
+            table: {
+                ...state.table,
+                [action.value.id]: {
+                    id: action.value.id,
+                    status: action.value.status,
+                    name: action.value.name,
+                    desc: action.value.desc,
+                    subitems: action.value.subitems
+                }
             }
-        ];
+        };
 
     case types.UPDATE_ITEM:
-        idx = state.findIndex((i) => i.id == action.value.id);
-        if (idx > -1) {
-            state[idx] = action.value;
-        }
-        return [
-            ...state
-        ];
+        return {
+            sort: [...state.sort],
+            table: {
+                ...state.table,
+                [action.value.id]: {
+                    ...action.value
+                }
+            }
+        };
 
     case types.REMOVE_ITEM:
-        idx = state.findIndex((i) => i.id == action.value.id);
-        if (idx > -1) {
-            state.splice(idx,1);
+        let sort = state.sort.filter((id) => id !== action.value.id);
+        let table = {...state.table};
+        if (table.hasOwnProperty(action.value.id)) {
+            delete table[action.value.id];
         }
-        return [
-            ...state
-        ];
+        return {
+            sort: sort,
+            table: {...table}
+        };
 
     default:
         return state;

@@ -13,6 +13,8 @@
     "test": "jest"
   },
   "dependencies": {
+    "denormalizr": "^0.4.1",
+    "normalizr": "^2.3.0",
     "react": "15.4.1",
     "react-native": "^0.38.0",
     "react-native-drawer": "^2.3.0",

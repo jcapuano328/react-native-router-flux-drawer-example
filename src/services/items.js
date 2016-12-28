@@ -1,5 +1,6 @@
 var items = require('./items.json');
 
+
 module.exports = {
     getAll() {
         return new Promise((resolve, reject) => resolve(items));
@@ -12,7 +13,7 @@ module.exports = {
             let idx = items.find((i) => i.id == item.id);
             if (idx > -1) {
                 items[idx] = item;
-            } else {                
+            } else {
                 items.push(item);
             }
             resolve(item);

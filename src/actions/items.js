@@ -1,11 +1,15 @@
 import types from '../constants/actionTypes';
 import items from '../services/items';
+import { normalize } from 'normalizr';
+import * as Schemas from '../../src/stores/schemas';
 import {toast} from './toast';
 
 export const getAll = () => (dispatch) => {
     return items.getAll()
-    .then((data) => {
-        dispatch({type: types.SET_ITEMS, value: data});
+    .then((data) => {        
+        let normalized = normalize(data, Schemas.items);
+        dispatch({type: types.SET_ITEMS, value: {ids: normalized.result, items: normalized.entities.items}});
+        dispatch({type: types.SET_SUBITEMS, value: normalized.entities.subitems});
     })
     .catch((err) => {
         console.error(err);

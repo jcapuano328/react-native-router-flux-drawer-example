@@ -7,26 +7,52 @@ import rootReducer from '../reducers';
             version: string,
             releasedate: datetime
         },
-        items: [], // the list of managed items
+        toast: {
+            active: bool,
+            message: string,
+            duration: integer
+        },
+        filter: {   // the filter for the items
+            period: string
+        },
+        items: { // the list of managed items
+            sort: [  //ordered list of items identifiers
+            ],
+            table: {
+                id : {
+                    id: int,
+                    status: string,
+                    name: string,
+                    desc: string,
+                    subitems: [
+                        // ordered list of subitem identifiers for this item
+                    ]
+                },
+                ...
+            }
+        },
+        subitems: {
+            id : {
+                id: int,
+                status: string,
+                name: string,
+                desc: string
+            }
+            ...
+        },
         currentitem: {  // currently selected item
             id: int,
             status: string,
             name: string,
             desc: string,
-            subitems: []
+            subitems: [
+                // ordered list of subitem identifiers for this item
+            ]
         },
         currentsubitem: {
             id: int,
             name: string,
             desc: string
-        },
-        filter: {   // the filter for the items
-            period: string
-        },
-        toast: {
-            active: bool,
-            message: string,
-            duration: integer
         }
     }
 */
